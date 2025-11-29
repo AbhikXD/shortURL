@@ -7,22 +7,23 @@ import jakarta.persistence.GenerationType;
 @Entity
 public class Urls {
     @Id
-    private int urlId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long urlId;
     private String longUrl;
     private String shortUrl;
 
     public Urls(){
 
     }
-    public Urls(int urlId,String longUrl,String shortUrl){
+    public Urls(long urlId,String longUrl,String shortUrl){
         this.urlId = urlId;
         this.longUrl = longUrl;
         this.shortUrl = shortUrl;
     }
-    public int getUrlId() {
+    public long getUrlId() {
         return urlId;
     }
-    public void setUrlId(int urlId) {
+    public void setUrlId(long urlId) {
         this.urlId = urlId;
     }
     public String getLongUrl() {
