@@ -3,20 +3,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
 @Entity
 public class Urls {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long urlId;
+
+    @Column(columnDefinition = "TEXT")
     private String longUrl;
     private String shortUrl;
 
     public Urls(){
 
     }
-    public Urls(long urlId,String longUrl,String shortUrl){
-        this.urlId = urlId;
+    public Urls(String longUrl,String shortUrl){
         this.longUrl = longUrl;
         this.shortUrl = shortUrl;
     }
@@ -36,4 +38,7 @@ public class Urls {
         return shortUrl;
 
     }
+    public void setShortUrl(String shortUrl) {
+        this.shortUrl = shortUrl;
+    }   
 }
