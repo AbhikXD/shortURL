@@ -1,6 +1,6 @@
 package com.project.shorturl.Service;
-import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+//import org.springframework.stereotype.Component;
+//import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.project.shorturl.Models.Urls;
 import com.project.shorturl.Repo.UrlRepo;
@@ -18,6 +18,10 @@ public class ShortUrlService {
         
         Urls url = new Urls();
         url.setLongUrl(longUrl);
+        Optional<Urls> longUrlTemp = urlRepo.findByLongUrl(longUrl);
+        if(longUrlTemp.isPresent()){
+            return longUrlTemp.get().getShortUrl();
+        }
         Urls savedUrl = urlRepo.save(url);
         String shortUrl = encode(savedUrl.getUrlId());
         savedUrl.setShortUrl(shortUrl);
