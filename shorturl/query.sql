@@ -1,0 +1,1 @@
+SELECT url_id, short_url, long_url FROM urls ORDER BY url_id;
